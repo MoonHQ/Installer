@@ -9,7 +9,7 @@
   "RT_MANIFEST": {
     "#1": {
       "0409": {
-        "description": "An Installer for the Equicord Discord Mod",
+        "description": "An Installer for the Mooncord Discord Mod",
         "minimum-os": "win10",
         "execution-level": "as invoker",
         "dpi-awareness": "system"
@@ -22,10 +22,10 @@
         "info": {
           "0409": {
             "Comments": "Comments",
-            "CompanyName": "Equicord",
-            "FileDescription": "Equicord Installer",
-            "LegalCopyright": "© 2023 Equicord and Contributors - GPL3.0",
-            "ProductName": "Equicord Installer",
+            "CompanyName": "Mooncord",
+            "FileDescription": "Mooncord Installer",
+            "LegalCopyright": "© 2023 Mooncord and Contributors - GPL3.0",
+            "ProductName": "Mooncord Installer",
             "ProductVersion": ""
           }
         }

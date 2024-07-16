@@ -7,14 +7,14 @@
 package main
 
 import (
-	"equicordinstaller/buildinfo"
+	"Mooncordinstaller/buildinfo"
 	"image/color"
 )
 
-const ReleaseUrl = "https://api.github.com/repos/Equicord/Equicord/releases/latest"
-const InstallerReleaseUrl = "https://api.github.com/repos/Equicord/Installer/releases/latest"
+const ReleaseUrl = "https://api.github.com/repos/ForkPrince/Mooncord/releases/latest"
+const InstallerReleaseUrl = "https://api.github.com/repos/MoonHQ/Installer/releases/latest"
 
-var UserAgent = "EquicordInstaller/" + buildinfo.InstallerGitHash + " (https://github.com/Equicord/Installer)"
+var UserAgent = "MooncordInstaller/" + buildinfo.InstallerGitHash + " (https://github.com/MoonHQ/Installer)"
 
 var (
 	DiscordGreen  = color.RGBA{R: 0x2D, G: 0x7C, B: 0x46, A: 0xFF}

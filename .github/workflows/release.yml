@@ -35,18 +35,18 @@ jobs:
         run: go get -v
 
       - name: Build Cli
-        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -tags "static cli" -ldflags "-s -w -X 'equicordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'equicordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o EquicordInstallerCli-linux
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -tags "static cli" -ldflags "-s -w -X 'Mooncordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'Mooncordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o MooncordInstallerCli-linux
 
       - name: Update executable
         run: |
-          chmod +x EquicordInstallerCli-linux
+          chmod +x MooncordInstallerCli-linux
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: EquicordInstaller-linux
+          name: MooncordInstaller-linux
           path: |
-            EquicordInstallerCli-linux
+            MooncordInstallerCli-linux
 
 
   build-mac:
@@ -82,26 +82,26 @@ jobs:
         run: go get -v
 
       - name: Build
-        run: CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 go build -v -tags static -ldflags "-s -w -X 'equicordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'equicordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o EquicordInstaller
+        run: CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 go build -v -tags static -ldflags "-s -w -X 'Mooncordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'Mooncordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o MooncordInstaller
 
       - name: Update executable
         run: |
-          chmod +x EquicordInstaller
+          chmod +x MooncordInstaller
 
       - name: Generate MacOS bundle
         run: |
-          mkdir -p EquicordInstaller.app/Contents/MacOS
-          mkdir -p EquicordInstaller.app/Contents/Resources
-          cp macos/Info.plist EquicordInstaller.app/Contents/Info.plist
-          mv EquicordInstaller EquicordInstaller.app/Contents/MacOS/EquicordInstaller
-          cp macos/icon.icns EquicordInstaller.app/Contents/Resources/icon.icns
-          zip -r EquicordInstaller.MacOS.zip EquicordInstaller.app
+          mkdir -p MooncordInstaller.app/Contents/MacOS
+          mkdir -p MooncordInstaller.app/Contents/Resources
+          cp macos/Info.plist MooncordInstaller.app/Contents/Info.plist
+          mv MooncordInstaller MooncordInstaller.app/Contents/MacOS/MooncordInstaller
+          cp macos/icon.icns MooncordInstaller.app/Contents/Resources/icon.icns
+          zip -r MooncordInstaller.MacOS.zip MooncordInstaller.app
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: EquicordInstaller-macos
-          path: EquicordInstaller.MacOS.zip
+          name: MooncordInstaller-macos
+          path: MooncordInstaller.MacOS.zip
 
 
   build-windows:
@@ -149,22 +149,22 @@ jobs:
           export GOROOT=/mingw64/lib/go
           export GOPATH=/mingw64
           go-winres make --product-version "git-tag"
-          CGO_ENABLED=1 GOOS=windows GOARCH=amd64 go build -v -tags static -ldflags "-s -w -H=windowsgui -extldflags=-static -X 'equicordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'equicordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o EquicordInstaller.exe
+          CGO_ENABLED=1 GOOS=windows GOARCH=amd64 go build -v -tags static -ldflags "-s -w -H=windowsgui -extldflags=-static -X 'Mooncordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'Mooncordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o MooncordInstaller.exe
 
       - name: Build i386 Cli
         shell: msys2 {0}
         run: |
           export GOROOT=/mingw64/lib/go
           export GOPATH=/mingw64
-          CGO_ENABLED=0 GOOS=windows GOARCH=386 go build -v -tags "static cli" -ldflags "-s -w -extldflags=-static -X 'equicordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'equicordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o EquicordInstallerCli.exe
+          CGO_ENABLED=0 GOOS=windows GOARCH=386 go build -v -tags "static cli" -ldflags "-s -w -extldflags=-static -X 'Mooncordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'Mooncordinstaller/buildinfo.InstallerTag=${{ github.ref_name }}'" -o MooncordInstallerCli.exe
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: EquicordInstaller-windows
+          name: MooncordInstaller-windows
           path: |
-            EquicordInstaller.exe
-            EquicordInstallerCli.exe
+            MooncordInstaller.exe
+            MooncordInstallerCli.exe
 
 
   release:
@@ -177,17 +177,17 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: EquicordInstaller-linux
+          name: MooncordInstaller-linux
           path: linux
 
       - uses: actions/download-artifact@v3
         with:
-          name: EquicordInstaller-macos
+          name: MooncordInstaller-macos
           path: macos
 
       - uses: actions/download-artifact@v3
         with:
-          name: EquicordInstaller-windows
+          name: MooncordInstaller-windows
           path: windows
 
       - name: Create the release
@@ -199,6 +199,6 @@ jobs:
           prerelease: false
           draft: false
           files: |
-            linux/EquicordInstallerCli-linux
-            macos/EquicordInstaller.MacOS.zip
-            windows/EquicordInstalle*.exe
+            linux/MooncordInstallerCli-linux
+            macos/MooncordInstaller.MacOS.zip
+            windows/MooncordInstalle*.exe

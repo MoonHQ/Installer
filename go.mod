@@ -1,4 +1,4 @@
-module equicordinstaller
+module Mooncordinstaller
 
 go 1.20
 

@@ -21,15 +21,15 @@ var FilesDirErr error
 var Patcher string
 
 func init() {
-	if dir := os.Getenv("EQUICORD_USER_DATA_DIR"); dir != "" {
-		Log.Debug("Using EQUICORD_USER_DATA_DIR")
+	if dir := os.Getenv("Mooncord_USER_DATA_DIR"); dir != "" {
+		Log.Debug("Using Mooncord_USER_DATA_DIR")
 		BaseDir = dir
 	} else if dir = os.Getenv("DISCORD_USER_DATA_DIR"); dir != "" {
-		Log.Debug("Using DISCORD_USER_DATA_DIR/../EquicordData")
-		BaseDir = path.Join(dir, "..", "EquicordData")
+		Log.Debug("Using DISCORD_USER_DATA_DIR/../MooncordData")
+		BaseDir = path.Join(dir, "..", "MooncordData")
 	} else {
 		Log.Debug("Using UserConfig")
-		BaseDir = appdir.New("Equicord").UserConfig()
+		BaseDir = appdir.New("Mooncord").UserConfig()
 	}
 	FilesDir = path.Join(BaseDir, "dist")
 	if !ExistsFile(FilesDir) {

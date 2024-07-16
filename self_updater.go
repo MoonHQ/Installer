@@ -7,7 +7,7 @@
 package main
 
 import (
-	"equicordinstaller/buildinfo"
+	"Mooncordinstaller/buildinfo"
 	"errors"
 	"fmt"
 	"io"
@@ -46,15 +46,15 @@ func init() {
 }
 
 func GetInstallerDownloadLink() string {
-	const BaseUrl = "https://github.com/Equicord/Installer/releases/latest/download/"
+	const BaseUrl = "https://github.com/MoonHQ/Installer/releases/latest/download/"
 	switch runtime.GOOS {
 	case "windows":
-		filename := Ternary(buildinfo.UiType == buildinfo.UiTypeCli, "EquicordInstallerCli.exe", "EquicordInstaller.exe")
+		filename := Ternary(buildinfo.UiType == buildinfo.UiTypeCli, "MooncordInstallerCli.exe", "MooncordInstaller.exe")
 		return BaseUrl + filename
 	case "darwin":
-		return BaseUrl + "EquicordInstaller.MacOS.zip"
+		return BaseUrl + "MooncordInstaller.MacOS.zip"
 	case "linux":
-		return BaseUrl + "EquicordInstallerCli-linux"
+		return BaseUrl + "MooncordInstallerCli-linux"
 	default:
 		return ""
 	}
@@ -90,7 +90,7 @@ func UpdateSelf() error {
 	}
 	defer res.Body.Close()
 
-	tmp, err := os.CreateTemp(ownExeDir, "EquicordInstallerUpdate")
+	tmp, err := os.CreateTemp(ownExeDir, "MooncordInstallerUpdate")
 	if err != nil {
 		return fmt.Errorf("Failed to create tempfile: %w", err)
 	}

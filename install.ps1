@@ -1,6 +1,6 @@
-$link = "https://github.com/Equicord/Installer/releases/latest/download/EquicordInstallerCli.exe"
+$link = "https://github.com/MoonHQ/Installer/releases/latest/download/MooncordInstallerCli.exe"
 
-$outfile = "$env:TEMP\EquicordInstallerCli.exe"
+$outfile = "$env:TEMP\MooncordInstallerCli.exe"
 
 Write-Output "Downloading installer to $outfile"
 
