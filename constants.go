@@ -11,7 +11,7 @@ import (
 	"image/color"
 )
 
-const ReleaseUrl = "https://api.github.com/repos/ForkPrince/Mooncord/releases/latest"
+const ReleaseUrl = "https://api.github.com/repos/MoonHQ/Mooncord/releases/latest"
 const InstallerReleaseUrl = "https://api.github.com/repos/MoonHQ/Installer/releases/latest"
 
 var UserAgent = "MooncordInstaller/" + buildinfo.InstallerGitHash + " (https://github.com/MoonHQ/Installer)"
