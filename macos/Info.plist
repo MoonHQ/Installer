@@ -9,7 +9,7 @@
         <string>icon.icns</string>
 
         <key>CFBundleIdentifier</key>
-        <string>com.moonhq.mooncordinstaller</string>
+        <string>io.github.moonhq.mooncordinstaller</string>
 
         <key>NSHighResolutionCapable</key>
         <true/>
